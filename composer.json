@@ -1,0 +1,11 @@
+{
+    "name": "grekts/rss-reader",
+    "description": "RSS reader",
+    "keywords": ["rss", "rss reader"],
+    "type": "project",
+    "license": "BSD-3-Clause",
+    "require": {
+        "grekts/getter-full-link": ">=1.0.0",
+        "grekts/rss-parser": ">=1.0.0"
+    }
+}

@@ -1,0 +1,148 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "47d4fb00c06f8148157ee51800e90f64",
+    "content-hash": "919394021b451384b0d474a5040a2279",
+    "packages": [
+        {
+            "name": "grekts/getter-full-link",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/grekts/getter-full-link.git",
+                "reference": "0b69435c8948bff6425418e53d040340dd60b883"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/grekts/getter-full-link/zipball/0b69435c8948bff6425418e53d040340dd60b883",
+                "reference": "0b69435c8948bff6425418e53d040340dd60b883",
+                "shasum": ""
+            },
+            "require": {
+                "mso/idna-convert": "1.*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "grekts\\getter-full-link\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Roman Tsutskov"
+                }
+            ],
+            "description": "Forms complete an existing link",
+            "keywords": [
+                "check link",
+                "exist link",
+                "link",
+                "url",
+                "yii2"
+            ],
+            "time": "2016-09-21 13:48:22"
+        },
+        {
+            "name": "grekts/rss-parser",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/grekts/rss-parser.git",
+                "reference": "5598358b21c7887a6bf97321764e053a7044f5e2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/grekts/rss-parser/zipball/5598358b21c7887a6bf97321764e053a7044f5e2",
+                "reference": "5598358b21c7887a6bf97321764e053a7044f5e2",
+                "shasum": ""
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "grekts\\rss-parser\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Roman Tsutskov"
+                }
+            ],
+            "description": "Parse Rss feeds",
+            "keywords": [
+                "parser",
+                "rss",
+                "rss parser",
+                "yii2"
+            ],
+            "time": "2016-09-21 17:45:20"
+        },
+        {
+            "name": "mso/idna-convert",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phlylabs/idna-convert.git",
+                "reference": "a6dfb6f87611e3a89d2eec4924a0f51db755c573"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phlylabs/idna-convert/zipball/a6dfb6f87611e3a89d2eec4924a0f51db755c573",
+                "reference": "a6dfb6f87611e3a89d2eec4924a0f51db755c573",
+                "shasum": ""
+            },
+            "require": {
+                "ext-pcre": "*",
+                "php": ">=5.6.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Mso\\IdnaConvert\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1+"
+            ],
+            "authors": [
+                {
+                    "name": "Matthias Sommerfeld",
+                    "email": "mso@phlylabs.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A library for encoding and decoding internationalized domain names",
+            "homepage": "http://idnaconv.net/",
+            "keywords": [
+                "idn",
+                "idna",
+                "php"
+            ],
+            "time": "2016-06-19 18:08:43"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

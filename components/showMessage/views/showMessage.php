@@ -1,0 +1,1 @@
+<div class='div-service-message' id='service-message-block'><p class="p-service-message" id="service-message"></p></div>

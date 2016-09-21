@@ -1,0 +1,15 @@
+.div-service-message {
+  position: absolute;
+  width: 500px;
+  background-color: #77cf77;
+  top: 60px;
+  left: 50%;
+  margin-left: -250px;
+  padding: 20px 10px 20px 10px;
+  display: none; }
+
+.p-service-message {
+  font-size: 14px;
+  text-align: center; }
+
+/*# sourceMappingURL=showMessage.css.map */
