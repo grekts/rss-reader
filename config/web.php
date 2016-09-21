@@ -53,7 +53,7 @@ $config = [
                 'news-to-archive' => 'news/news-to-archive',
                 'delete-from-archive' => 'news/delete-archive-news',
                 'set-read' => 'news/set-read',
-                'delet-readed' => 'news/delete-read',
+                'delete-readed' => 'news/delete-read',
             ],
         ],
     ],
