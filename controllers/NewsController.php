@@ -5,9 +5,11 @@ namespace app\controllers;
 use Yii;
 use yii\web\Controller;
 use yii\helpers\Html;
+use yii\helpers\Json;
 use app\models\FeedUrl;
 use app\models\FeedNews;
 use rssparser\RssParser;
+use yii\base\ErrorException;
 
 /**
 *
@@ -39,7 +41,7 @@ class NewsController extends Controller
 				//Флаг определяет есть ли в базе данных новость, расположенная по определенной ссылке
 				$flagNewsInDb = false;
 				//Проходим все ссылки на новости, уже находящиеся в базе
-				foreach ($newsUrls  as $newsUrl) {
+				foreach ($newsUrls as $newsUrl) {
 					//Если ссылка на текущую новую нвоость совпадает с ссылкой одной из новостей, находящихся в базе
 					if($newsUrl['news_link'] === $dataOneNews['link']) {
 						//Устанавливаем флаг что новость уже есть в базе
@@ -49,10 +51,22 @@ class NewsController extends Controller
 				}
 				//Если новости нет в базе
 				if($flagNewsInDb === false) {
-					//Сохраняем новость в базе данных
-					FeedNews::saveNews($dataOneNews, $feedData['feed_id']);
+					//Формируем массив со всеми новостями, коотрых еще нет в системе
+					$newsList[] = [
+						null, 
+						$feedData['feed_id'],
+						$dataOneNews['title'],
+						Json::encode($dataOneNews['description']),
+						$dataOneNews['link'],
+						$dataOneNews['publicationDate'],
+						0
+					];
 				}
 			}
+		}
+		if(isset($newsList) === true) {
+			//Сохраняем новость в базе данных
+			FeedNews::saveNews($newsList);
 		}
 	}
 
@@ -63,12 +77,26 @@ class NewsController extends Controller
 	* @access public
 	*/
 	public function actionNewsToArchive() {
+		//Формируем экземпляр модели новостей
 		$model = new FeedNews();
+		//Получаем от пользователя id новости, которую необходимо отправить в архив
 		$newsIdData = Yii::$app->request->post();
-		if($model->load($newsIdData) && $model->validate()) {
-			FeedNews::sendNewsDataToArchive($model->newsId);
+		//Если от пользователи пришли данные
+		if($newsIdData !== []) {
+			//Если данные успешно загрузились в модель
+			if($model->load($newsIdData) === true) {
+				//Если данные прошли валидацию
+				if($model->validate() === true) {
+					//Отправляем новосьт в архив
+					FeedNews::sendNewsDataToArchive($model->newsId);
+				} else {
+					throw new ErrorException(Html::encode($model->errors['newsId'][0]));
+				}
+			} else {
+				throw new ErrorException("Ошибка системы");
+			}
 		} else {
-			Yii::$app->response->content = Html::encode($model->errors['newsId'][0]);
+			throw new ErrorException("Ошибка системы");
 		}
 	}
 
@@ -79,12 +107,26 @@ class NewsController extends Controller
 	* @access public
 	*/
 	public function actionDeleteArchiveNews() {
+		//Формируем экземпляр модели новостей
 		$model = new FeedNews();
+		//Получаем от пользователя id новости, которую необходимо удалить из архива
 		$newsIdData = Yii::$app->request->post();
-		if($model->load($newsIdData) && $model->validate()) {
-			FeedNews::deleteNewsFromArchive($model->newsId);
+		//Если от пользователи пришли данные
+		if($newsIdData !== []) {
+			//Если данные успешно загрузились в модель
+			if($model->load($newsIdData) === true) {
+				//Если данные прошли валидацию
+				if($model->validate() === true) {
+					//Производим удалени новости из архива
+					FeedNews::deleteNewsFromArchive($model->newsId);
+				} else {
+					throw new ErrorException(Html::encode($model->errors['newsId'][0]));
+				}
+			} else {
+				throw new ErrorException("Ошибка системы");
+			}
 		} else {
-			Yii::$app->response->content = Html::encode($model->errors['newsId'][0]);
+			throw new ErrorException("Ошибка системы");
 		}
 	}
 
@@ -95,12 +137,26 @@ class NewsController extends Controller
 	* @access public
 	*/
 	public function actionSetRead() {
+		//Формируем экземпляр модели новостей
 		$model = new FeedNews();
+		//Получаем от пользователя id новости
 		$newsIdData = Yii::$app->request->post();
-		if($model->load($newsIdData) && $model->validate()) {
-			FeedNews::setNewsRead($model->newsId);
+		//Если от пользователи пришли данные
+		if($newsIdData !== []) {
+			//Если данные успешно загрузились в модель
+			if($model->load($newsIdData) === true) {
+				//Если данные прошли валидацию
+				if($model->validate() === true) {
+					//Производим обновление значения флага
+					FeedNews::setNewsRead($model->newsId);
+				} else {
+					throw new ErrorException(Html::encode($model->errors['newsId'][0]));
+				}
+			} else {
+				throw new ErrorException("Ошибка системы");
+			}
 		} else {
-			Yii::$app->response->content = Html::encode($model->errors['newsId'][0]);
+			throw new ErrorException("Ошибка системы");
 		}
 	}
 
@@ -111,6 +167,7 @@ class NewsController extends Controller
 	* @access public
 	*/
 	public function actionDeleteRead() {
+		//Производим удаление прочитанных новостей
 		FeedNews::deleteRead();
 	}
 }

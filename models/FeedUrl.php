@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\base\ErrorException;
+use yii\db\Exception;
 
 /**
 * Модель ссылок фидов
@@ -23,6 +24,7 @@ class FeedUrl extends Model
     public function rules()
     {
         return [
+            ['url', 'trim'],
             ['url', 'required', 'message' => 'Ссылка на фид не указана'],
             ['url', 'url', 'defaultScheme' => 'http', 'message' => 'Указанные данные не являются ссылкой'],
         ];
@@ -38,8 +40,8 @@ class FeedUrl extends Model
     public static function getFeedsLinkFromDb() {
         try {
             return Yii::$app->db->createCommand('SELECT feed_url, feed_id FROM feeds')->queryAll();
-        } catch (ErrorExeption $e) {
-            throw new ErrorException("Ошибка при получении списка фидов из базы данных");
+        } catch (Exeption $e) {
+            throw new ErrorException("Ошибка системы");
         }
     }
 }

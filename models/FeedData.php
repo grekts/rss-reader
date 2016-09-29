@@ -5,6 +5,8 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\base\ErrorException;
+use yii\base\UserException;
+use yii\db\Exception;
 
 /**
 * Модель работы одновременно со всеми данными фида
@@ -25,18 +27,13 @@ class FeedData extends Model
     */
     public static function sendFeedData($fullUrl)
     {
-        $typeData = gettype($fullUrl);
-        if(($typeData === 'string') && ($fullUrl !== '')) {
-            try {
-                Yii::$app->db->createCommand('INSERT INTO feeds VALUES (:id, :url)')
-                    ->bindValues([':id' => null, ':url' => $fullUrl])
-                    ->execute();
-                return true;
-            } catch (ErrorException $e) {
-                throw new ErrorException("Ошибка при отправке данных фида в базу");
-            }
-        } else {
-            throw new ErrorException("Тип входных данных не соответствует string или не переданы");
+        try {
+            Yii::$app->db->createCommand('INSERT INTO feeds VALUES (:id, :url)')
+                ->bindValues([':id' => null, ':url' => $fullUrl])
+                ->execute();
+            Yii::$app->response->content = 'Ссылка на фид успешно сохранена';
+        } catch (Exception $e) {
+            throw new UserException("Указанный фид был сохранен ранее");
         }
     }
 
@@ -51,22 +48,19 @@ class FeedData extends Model
     */
     public static function deleteFeedData($feedId)
     {
-        $typeData = gettype($feedId);
-        if(($typeData === 'string') && ($feedId !== '')) {
-            try {
-                $deleteResult = Yii::$app->db->createCommand('DELETE FROM feeds WHERE feed_id = :id')
-                    ->bindValues([':id' => $feedId])
-                    ->execute();
-                if($deleteResult !== false) {
-                    Yii::$app->response->content = 'Фид удален из базы';
-                } else {
-                    Yii::$app->response->content = 'Произошла ошибка при удалении фида';
-                }
-            } catch (ErrorException $e) {
-                throw new ErrorException("Ошибка при отправке данных фида в базу");
-            }
+        try {
+            $deleteResult = Yii::$app->db->createCommand('DELETE FROM feeds WHERE feed_id = :id')
+                ->bindValues([':id' => $feedId])
+                ->execute();
+        } catch (Exception $e) {
+            throw new ErrorException("Ошибка системы");
+        }
+
+        //Если при удалении был удален хотя бы один элемент
+        if($deleteResult !== 0) {
+            Yii::$app->response->content = 'Фид удален из базы';
         } else {
-            throw new ErrorException("Тип входных данных не соответствует string или не переданы");
+            throw new UserException("Указанного фида нет в системе");
         }
     }
 
@@ -81,8 +75,8 @@ class FeedData extends Model
     public static function getFeedsData() {
         try {
             return Yii::$app->db->createCommand('SELECT feed_id, feed_url FROM feeds')->queryAll();
-        } catch (ErrorExeption $e) {
-            throw new ErrorException("Ошибка при получении из базы данных списка фидов");
+        } catch (Exeption $e) {
+             throw new ErrorException("Ошибка системы");
         }
     }
 }
