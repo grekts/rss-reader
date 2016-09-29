@@ -9,20 +9,20 @@ $this -> registerJsFile('/js/index.js');
 ?>
 		<div class="main">
 			<div class="row marg-center">
-				<div class="cols-12 cols-6 inline-block">
+				<div class="col-md-12 col-sm-12 col-xl-6 inline-block">
 					<h1 class="h1-title">Новости</h1>
 				</div>
 			</div>
 			<?php if($newsData !== []): ?>
 				<?php foreach($newsData as $oneNews): ?>
 					<div class="row marg-center bord-bottom" id="row-<?= $oneNews['news_id']; ?>">
-						<div class="cols-1 inline-block">
+						<div class="col-md-1 col-sm-1 col-xl-1 inline-block">
 						    <img src="/images/folder-not-active.png" alt="Отправить в архив" class="folder cursor-pointer" id="img-folder-<?= $oneNews['news_id']; ?>">
 						</div>
-						<div class="cols-9 cols-4 inline-block cursor-pointer" id="title-<?= $oneNews['news_id']; ?>">
+						<div class="col-md-9 col-sm-9 col-xl-4 inline-block cursor-pointer" id="title-<?= $oneNews['news_id']; ?>">
 							<p class="news-title"><?= $oneNews['news_title']; ?></p>
 						</div>
-						<div class="cols-2 cols-1 inline-block cursor-pointer" id="date-<?= $oneNews['news_id']; ?>">
+						<div class="col-md-2 col-sm-2 col-xl-1 inline-block cursor-pointer" id="date-<?= $oneNews['news_id']; ?>">
 							<p class="news-date">
 								<?php 
 									$date = new \DateTime();
@@ -33,7 +33,7 @@ $this -> registerJsFile('/js/index.js');
 						</div>
 					</div>
 					<div class="row marg-center bord-bottom not-display" id="description-<?= $oneNews['news_id']; ?>">
-						<div class="cols-12 cols-6 inline-block cursor-pointer">
+						<div class="col-md-12 col-sm-12 col-xl-6 inline-block cursor-pointer">
 							<p class="news-description">
 								<?php
 									$newsDescription = Json::decode($oneNews['news_description']);

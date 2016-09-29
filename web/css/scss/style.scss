@@ -1,16 +1,3 @@
-$cols-size-970: 50.5px;
-$cols-size-750: 32px;
-$cols-size-480: 50px;
-$cols-padding: 15px;
-
-$max-width-media-1: 969px;
-$max-width-media-2: 760px;
-
-@mixin cols-padding(){
-	padding-left: $cols-padding;
-	padding-right: $cols-padding;
-}
-
 .not-display{
 	display: none;
 }
@@ -22,6 +9,10 @@ $max-width-media-2: 760px;
 
 .cursor-pointer {
 	cursor: pointer;
+}
+
+.marg-center{
+	margin: 0px auto;
 }
 
 *{

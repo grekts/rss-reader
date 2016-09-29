@@ -5,7 +5,7 @@
 .header-height{
 	height: 50px;
 
-	@media screen and (max-width: $max-width-media-2) {
+	@media screen and (max-width: $width-sm) {
 		height: 80px;
   	}
 }
@@ -35,7 +35,7 @@
 	top: 20px;
 	right: 20px;
 
-	@media screen and (max-width: $max-width-media-2) {
+	@media screen and (max-width: $width-sm) {
 		display: inherit !important;
   	}
 }
@@ -51,7 +51,7 @@
 
 .element-main-menu{
 	display: inline;
-	margin-right: 38px;
+	margin-right: 30px;
 }
 
 .menu-text{

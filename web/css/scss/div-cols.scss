@@ -1,80 +1,291 @@
+/* Ширина колонки при width >= 970px */
+$col-size-md: 50.5px;
+/* Ширина колонки при width >= 750px */
+$col-size-sm: 32px;
+/* Ширина колонки при width < 750px */
+$col-size-xl: 50px;
 
-.row{
-	width: 970px;
+/* Величина padding с одной стороны колонки */
+$col-padding: 15px;
 
-	@media screen and (max-width: $max-width-media-1) {
+/* Установка величины padding колонки */
+@mixin cols-padding() {
+	padding-left: $col-padding;
+	padding-right: $col-padding;
+}
+
+/* Минимальная ширина блока для настольных пк */
+$width-md: 990px;
+/* Минимальная ширина блока для планшета */
+$width-sm: 760px;
+/* Минимальная ширина блока для планшета */
+$width-xl: 0px;
+
+/* Размер строки исходя из текущего размера окна браузера */
+.row {
+	@media screen and (min-width: $width-md) {
+    	width: 970px;
+  	}
+
+  	@media screen and (max-width: $width-md) and (min-width: $width-sm) {
     	width: 750px;
   	}
 
-  	@media screen and (max-width: $max-width-media-2) {
+  	@media screen and (max-width: $width-sm) {
     	width: 480px;
   	}
 }
 
-.cols-1{
+.col-md-1 {
 	@include cols-padding();
-	width: $cols-size-970;
-
-	@media screen and (max-width: $max-width-media-1) {
-    	width: $cols-size-750;
-  	}
-
-  	@media screen and (max-width: $max-width-media-2) {
-		@include cols-padding();
-    	width: $cols-size-480 !important;
+	@media screen and (min-width: $width-md) {
+    	width: 1*$col-size-md;
   	}
 }
 
-.cols-2{
+.col-md-2 {
 	@include cols-padding();
-	width: $cols-size-970 * 2 + (2 * $cols-padding);
-
-	@media screen and (max-width: $max-width-media-1) {
-    	width: $cols-size-750 * 2 + (2 * $cols-padding);
+	@media screen and (min-width: $width-md) {
+    	width: 2*$col-size-md+2*$col-padding;
   	}
 }
 
-.cols-4{
-	@media screen and (max-width: $max-width-media-2) {
-		@include cols-padding();
-    	width: $cols-size-480 * 4 + (6 * $cols-padding) !important;
-  	}
-}
-
-.cols-5{
+.col-md-3 {
 	@include cols-padding();
-	width: $cols-size-970 * 5 + (8 * $cols-padding);
-
-	@media screen and (max-width: $max-width-media-1) {
-    	width: $cols-size-750 * 5 + (8 * $cols-padding);
+	@media screen and (min-width: $width-md) {
+    	width: 3*$col-size-md+4*$col-padding;
   	}
 }
 
-.cols-6{
-	@media screen and (max-width: $max-width-media-2) {
-		@include cols-padding();
-    	width: $cols-size-480 * 6 + (12 * $cols-padding) !important;
-  	}
-}
-
-.cols-9{
+.col-md-4 {
 	@include cols-padding();
-	width: $cols-size-970 * 9 + (16 * $cols-padding);
-
-	@media screen and (max-width: $max-width-media-1) {
-    	width: $cols-size-750 * 9 + (16 * $cols-padding);
+	@media screen and (min-width: $width-md) {
+    	width: 4*$col-size-md+6*$col-padding;
   	}
 }
 
-.cols-12{
+.col-md-5 {
 	@include cols-padding();
-	width: $cols-size-970 * 12 + (22 * $cols-padding);
-
-	@media screen and (max-width: $max-width-media-1) {
-    	width: $cols-size-750 * 12 + (22 * $cols-padding);
+	@media screen and (min-width: $width-md) {
+    	width: 5*$col-size-md+8*$col-padding;
   	}
 }
 
-.marg-center{
-	margin: 0px auto;
+.col-md-6 {
+	@include cols-padding();
+	@media screen and (min-width: $width-md) {
+    	width: 6*$col-size-md+10*$col-padding;
+  	}
+}
+
+.col-md-7 {
+	@include cols-padding();
+	@media screen and (min-width: $width-md) {
+    	width: 7*$col-size-md+12*$col-padding;
+  	}
+}
+
+.col-md-8 {
+	@include cols-padding();
+	@media screen and (min-width: $width-md) {
+    	width: 8*$col-size-md+14*$col-padding;
+  	}
+}
+
+.col-md-9 {
+	@include cols-padding();
+	@media screen and (min-width: $width-md) {
+    	width: 9*$col-size-md+16*$col-padding;
+  	}
+}
+
+.col-md-10 {
+	@include cols-padding();
+	@media screen and (min-width: $width-md) {
+    	width: 10*$col-size-md+18*$col-padding;
+  	}
+}
+
+.col-md-11 {
+	@include cols-padding();
+	@media screen and (min-width: $width-md) {
+    	width: 11*$col-size-md+20*$col-padding;
+  	}
+}
+
+.col-md-12 {
+	@include cols-padding();
+	@media screen and (min-width: $width-md) {
+    	width: 12*$col-size-md+22*$col-padding;
+  	}
+}
+
+
+.col-sm-1 {
+	@include cols-padding();
+	@media screen and (max-width: $width-md) and (min-width: $width-sm) {
+    	width: 1*$col-size-sm;
+  	}
+}
+
+.col-sm-2 {
+	@include cols-padding();
+	@media screen and (max-width: $width-md) and (min-width: $width-sm) {
+    	width: 2*$col-size-sm+2*$col-padding;
+  	}
+}
+
+.col-sm-3 {
+	@include cols-padding();
+	@media screen and (max-width: $width-md) and (min-width: $width-sm) {
+    	width: 3*$col-size-sm+4*$col-padding;
+  	}
+}
+
+.col-sm-4 {
+	@include cols-padding();
+	@media screen and (max-width: $width-md) and (min-width: $width-sm) {
+    	width: 4*$col-size-sm+6*$col-padding;
+  	}
+}
+
+.col-sm-5 {
+	@include cols-padding();
+	@media screen and (max-width: $width-md) and (min-width: $width-sm) {
+    	width: 5*$col-size-sm+8*$col-padding;
+  	}
+}
+
+.col-sm-6 {
+	@include cols-padding();
+	@media screen and (max-width: $width-md) and (min-width: $width-sm) {
+    	width: 6*$col-size-sm+10*$col-padding;
+  	}
+}
+
+.col-sm-7 {
+	@include cols-padding();
+	@media screen and (max-width: $width-md) and (min-width: $width-sm) {
+    	width: 7*$col-size-sm+12*$col-padding;
+  	}
+}
+
+.col-sm-8 {
+	@include cols-padding();
+	@media screen and (max-width: $width-md) and (min-width: $width-sm) {
+    	width: 8*$col-size-sm+14*$col-padding;
+  	}
+}
+
+.col-sm-9 {
+	@include cols-padding();
+	@media screen and (max-width: $width-md) and (min-width: $width-sm) {
+    	width: 9*$col-size-sm+16*$col-padding;
+  	}
+}
+
+.col-sm-10 {
+	@include cols-padding();
+	@media screen and (max-width: $width-md) and (min-width: $width-sm) {
+    	width: 10*$col-size-sm+18*$col-padding;
+  	}
+}
+
+.col-sm-11 {
+	@include cols-padding();
+	@media screen and (max-width: $width-md) and (min-width: $width-sm) {
+    	width: 11*$col-size-sm+20*$col-padding;
+  	}
+}
+
+.col-sm-12 {
+	@include cols-padding();
+	@media screen and (max-width: $width-md) and (min-width: $width-sm) {
+    	width: 12*$col-size-sm+22*$col-padding;
+  	}
+}
+
+
+.col-xl-1 {
+	@include cols-padding();
+	@media screen and (max-width: $width-sm) {
+    	width: 1*$col-size-xl;
+  	}
+}
+
+.col-xl-2 {
+	@include cols-padding();
+	@media screen and (max-width: $width-sm) {
+    	width: 2*$col-size-xl+2*$col-padding;
+  	}
+}
+
+.col-xl-3 {
+	@include cols-padding();
+	@media screen and (max-width: $width-sm) {
+    	width: 3*$col-size-xl+4*$col-padding;
+  	}
+}
+
+.col-xl-4 {
+	@include cols-padding();
+	@media screen and (max-width: $width-sm) {
+    	width: 4*$col-size-xl+6*$col-padding;
+  	}
+}
+
+.col-xl-5 {
+	@include cols-padding();
+	@media screen and (max-width: $width-sm) {
+    	width: 5*$col-size-xl+8*$col-padding;
+  	}
+}
+
+.col-xl-6 {
+	@include cols-padding();
+	@media screen and (max-width: $width-sm) {
+    	width: 6*$col-size-xl+10*$col-padding;
+  	}
+}
+
+.col-xl-7 {
+	@include cols-padding();
+	@media screen and (max-width: $width-sm) {
+    	width: 7*$col-size-xl+12*$col-padding;
+  	}
+}
+
+.col-xl-8 {
+	@include cols-padding();
+	@media screen and (max-width: $width-sm) {
+    	width: 8*$col-size-xl+14*$col-padding;
+  	}
+}
+
+.col-xl-9 {
+	@include cols-padding();
+	@media screen and (max-width: $width-sm) {
+    	width: 9*$col-size-xl+16*$col-padding;
+  	}
+}
+
+.col-xl-10 {
+	@include cols-padding();
+	@media screen and (max-width: $width-sm) {
+    	width: 10*$col-size-xl+18*$col-padding;
+  	}
+}
+
+.col-xl-11 {
+	@include cols-padding();
+	@media screen and (max-width: $width-sm) {
+    	width: 11*$col-size-xl+20*$col-padding;
+  	}
+}
+
+.col-xl-12 {
+	@include cols-padding();
+	@media screen and (max-width: $width-sm) {
+    	width: 12*$col-size-xl+22*$col-padding;
+  	}
 }

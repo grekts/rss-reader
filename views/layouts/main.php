@@ -22,11 +22,11 @@ AppAsset::register($this);
 	<div class="container">
 		<header class="header">
 		    <div class="row marg-center header-height">
-			    <div class="cols-2 cols-6 pos-relative inline-block">
+			    <div class="col-md-2 col-sm-2 col-xl-6 pos-relative inline-block">
 			    	<a href="/" class="logo">RSS</a>
 			    </div>
 			    <?= ShowMessageWidget::widget() ?>
-			    <div class="cols-5 cols-6 inline-block">
+			    <div class="col-md-5 col-sm-5 col-xl-6 inline-block">
 		    	<?= 
 		    		Menu::widget([
 					    'items' => [
@@ -44,7 +44,7 @@ AppAsset::register($this);
 		    	?>
 		    	<div class="main-menu-button not-display cursor-pointer">≡</div>
 			    </div>
-			    <div class="cols-5 cols-6 pos-relative inline-block">
+			    <div class="col-md-5 col-sm-5 col-xl-6 pos-relative inline-block">
 			    	<?= SendUrlFormWidget::widget() ?>
 			    </div>
 			</div>
@@ -52,7 +52,7 @@ AppAsset::register($this);
 		<?= $content ?>
 		<footer class="footer">
 			<div class="row marg-center">
-				<div class="cols-12 cols-6 inline-block">
+				<div class="col-md-12 col-sm-12 col-xl-6 inline-block">
 					<p class="copyright">&#169; <?= date('Y'); ?></p>
 				</div>
 			</div>
